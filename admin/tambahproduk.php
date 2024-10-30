@@ -9,11 +9,12 @@
 </head>
 
 <body>
-    <form action="prosestambah.php" method="post">
-        <p>nama : <input type="text" name="nama" id=""></p>
-        <p>harga <input type="text" name="harga" id=""></p>
-        <p>deskripsi <input type="text" name="deskripsi" id=""></p>
-        <p>kategori <input type="text" name="kategori" id=""></p>
+    <form action="prosestambah.php" method="post" enctype="multipart/form-data">
+        <labael>nama : <input type="text" name="nama" id=""></label>
+        <label>harga <input type="text" name="harga" id=""></label>
+        <label>deskripsi <input type="text" name="deskripsi" id=""></label>
+        <label>kategori <input type="text" name="kategori" id=""></label>
+        <label>foto <input type="file" name="foto" id=""></label>
         <button type="submit">simpan</button>
     </form>
 </body>

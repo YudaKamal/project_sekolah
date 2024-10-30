@@ -20,7 +20,7 @@
             $_SESSION['role'] = $data['role'];
 
             if($_SESSION['role'] == "admin"){
-                header("location:halaman_admin.php");
+                header("location:admin/halaman_admin.php");
             }else{header("location:index.php");}
         }else{
             header("location:login.php?error=username atau password salah");
