@@ -31,7 +31,7 @@
                 <td><?= $produk['deskripsi'] ?></td>
                 <td><?= $produk['kategori'] ?></td>
                 <td>
-                <a href="hapus.php?nama=<?= $produk['nama'] ?>">
+                <a href="hapus.php?id=<?= $produk['id'] ?>">
                         <button type="submit" class="btn btn-danger">Hapus</button></a>
                 </td>
             </tr>

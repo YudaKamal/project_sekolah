@@ -6,10 +6,9 @@
     $kategori = $_POST['kategori'];
     $nama_foto = $_FILES['foto']['name'];
     $lokasi_tmp = $_FILES['foto']['tmp_name'];
-    $nama_baru = time().$nama_foto;
 
 
-    $sql = "INSERT INTO produk (`id`, `nama`, `harga`, `deskripsi`, `kategori`, `foto`) values('', '$nama', '$harga', '$deskripsi', '$kategori','$nama_baru')";
+    $sql = "INSERT INTO produk values('', '$nama', '$harga', '$deskripsi', '$kategori','$nama_foto')";
     $query = mysqli_query($koneksi, $sql);
     
     

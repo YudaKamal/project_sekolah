@@ -1,3 +1,11 @@
+<?php
+    include("koneksi.php");
+
+    $query = mysqli_query($koneksi, "select * from produk");
+
+    
+?>
+
 <!doctype html>
 <html lang="id">
 
@@ -50,21 +58,22 @@
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
+                    <a href= "logout.php" class="btn btn-primary" type="submit">logout<a>
                 </form>
             </div>
         </div>
     </nav>
 
-    <div id="carouselExampleFade" class="carousel slide carousel-fade">
+    <div id="carouselExampleFade" class="carousel slide carousel-fade" style="margin-top: 50px">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="..." class="d-block w-100" alt="...">
+                <img src="asset/gw banget.jpg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="..." class="d-block w-100" alt="...">
+                <img src="asset/banner.avif" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="..." class="d-block w-100" alt="...">
+                <img src="asset/banner2.avif" class="d-block w-100" alt="...">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
@@ -77,15 +86,22 @@
         </button>
     </div>
 
-    <div class="card" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+    <div class="container d-inline-flex gap-5">
+        <?php
+            while ($data = mysqli_fetch_array($query)) {
+        ?>
+        <div class="card mt-5" style="width: 18rem;">
+            <img src="asset/<?php echo $data['foto'] ?>" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"><?php echo $data['nama'] ?></h5>
+                <p class="card-text"><?php echo $data['harga'] ?></p>
+                <p class="card-text"><?php echo $data['deskripsi'] ?></p>
+                <a href="detailproduk.php" class="btn btn-primary">Go somewhere</a>
+            </div>
         </div>
+        <?php } ?>
     </div>
+
 </body>
 
 </html>
