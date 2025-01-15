@@ -1,9 +1,6 @@
 <?php
     include("koneksi.php");
-
     $query = mysqli_query($koneksi, "select * from produk");
-
-    
 ?>
 
 <!doctype html>
@@ -13,95 +10,92 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>cihuyy</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .navbar {
+            background: linear-gradient(90deg, #4CAF50, #81C784);
+        }
+        .carousel-item img {
+            height: 500px;
+            object-fit: cover;
+        }
+        .card {
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        footer {
+            margin-top: 50px;
+            background: #343a40;
+            color: white;
+            padding: 20px 0;
+        }
+    </style>
 </head>
 
 <body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+            <a class="navbar-brand" href="#">cihuyy</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                    </li>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Produk</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Kontak</a></li>
+                    <li class="nav-item"><a href="logout.php" class="btn btn-outline-light">Logout</a></li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                    <a href= "logout.php" class="btn btn-primary" type="submit">logout<a>
-                </form>
             </div>
         </div>
     </nav>
 
-    <div id="carouselExampleFade" class="carousel slide carousel-fade" style="margin-top: 50px">
+    <div id="carouselExampleFade" class="carousel slide carousel-fade mt-4">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="asset/gw banget.jpg" class="d-block w-100" alt="...">
+                <img src="asset/gw banget.jpg" class="d-block w-100" alt="Slide 1">
             </div>
             <div class="carousel-item">
-                <img src="asset/banner.avif" class="d-block w-100" alt="...">
+                <img src="asset/banner.avif" class="d-block w-100" alt="Slide 2">
             </div>
             <div class="carousel-item">
-                <img src="asset/banner2.avif" class="d-block w-100" alt="...">
+                <img src="asset/banner2.avif" class="d-block w-100" alt="Slide 3">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
+            <span class="carousel-control-prev-icon"></span>
         </button>
         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
+            <span class="carousel-control-next-icon"></span>
         </button>
     </div>
 
-    <div class="container d-inline-flex gap-5">
-        <?php
-            while ($data = mysqli_fetch_array($query)) {
-        ?>
-        <div class="card mt-5" style="width: 18rem;">
-            <img src="asset/<?php echo $data['foto'] ?>" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title"><?php echo $data['nama'] ?></h5>
-                <p class="card-text"><?php echo $data['harga'] ?></p>
-                <p class="card-text"><?php echo $data['deskripsi'] ?></p>
-                <a href="detailproduk.php" class="btn btn-primary">Go somewhere</a>
+    <div class="container text-center mt-5">
+        <h2 class="mb-4">Produk Kami</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <?php while ($data = mysqli_fetch_array($query)) { ?>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="asset/<?php echo $data['foto'] ?>" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"> <?php echo $data['nama'] ?> </h5>
+                        <p class="card-text">Harga: <?php echo $data['harga'] ?></p>
+                        <p class="card-text">Deskripsi: <?php echo $data['deskripsi'] ?></p>
+                        <a href="detailproduk.php?id=<?= $data['id'] ?>" class="btn btn-primary">detail produk</a>
+                    </div>
+                </div>
             </div>
+            <?php } ?>
         </div>
-        <?php } ?>
     </div>
 
+    <footer class="text-center mt-5">
+        <p>&copy; 2024 cihuyy. All Rights Reserved.</p>
+    </footer>
 </body>
 
 </html>
